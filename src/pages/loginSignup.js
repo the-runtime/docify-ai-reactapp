@@ -37,7 +37,7 @@ function handleGoogleLogin() {
 
 const LoginPage = ( () => {
     return (
-        <Basepage>
+        <Basepage name="Login">
         <LoginSignup/>
         </Basepage>
     )

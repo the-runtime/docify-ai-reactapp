@@ -1,9 +1,20 @@
-import React from 'react';
-import { Button, Card, CardContent, Typography } from '@mui/material';
+import React, {useEffect, useState} from 'react';
+import {Button, Card, CardContent, Typography} from '@mui/material';
 import './Settings.css';
 import Basepage from "./Basepage";
 
 function Settings() {
+    const [data, setData] = useState()
+    useEffect(() => {
+        getUserInfo().then(data => {
+            setData(data)
+            console.log(data)
+        })
+    }, [])
+    if (!data){
+        return null
+    }
+
     return (
         <div className="settings-container">
             <Card className="settings-card">
@@ -12,9 +23,9 @@ function Settings() {
                         Account Settings
                     </Typography>
                     <div className="account-info">
-                        <Typography variant="body2">Username: YourUsername</Typography>
-                        <Typography variant="body2">Email: your.email@example.com</Typography>
-                        <Typography variant="body2">Remaining Credits: 50</Typography>
+                        <Typography variant="body2">Username:{data.name}</Typography>
+                        <Typography variant="body2">Email:{data.email}</Typography>
+                        <Typography variant="body2">Remaining Credits: {data.credits}</Typography>
                     </div>
                     <Button variant="contained" color="primary" onClick={handleSignOut}>
                         Sign Out
@@ -28,6 +39,20 @@ function Settings() {
     );
 }
 
+
+async function getUserInfo() {
+    const url = "http://127.0.0.1:8080/api/userinfo"
+    const resp = await fetch(url,{
+        method: 'Get',
+        credentials: 'include'
+    })
+    if (resp.ok) {
+        return await resp.json()
+    }else {
+    //     send a notification to login again because of expired token
+        console.log("Token expired")
+    }
+}
 function handleSignOut() {
     // Handle sign-out functionality here
     console.log('User clicked Sign Out');
@@ -40,7 +65,7 @@ function handleDeleteAccount() {
 
 const SettingsPage = (() => {
     return (
-        <Basepage>
+        <Basepage name="Settings">
             <Settings/>
         </Basepage>
     )
