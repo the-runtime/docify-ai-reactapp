@@ -13,7 +13,7 @@ function LoginSignup() {
                     <Typography variant="h5" component="div">
                         Login or Sign Up
                     </Typography>
-                    <Link to="http://127.0.0.1:8080/auth/google">
+                    <Link to="/auth/google">
                     <Button
                         variant="contained"
                         color="primary"

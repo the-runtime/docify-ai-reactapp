@@ -2,13 +2,17 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 import { defineConfig } from 'vite'
 
-console.log("Hello")
 // https://vitejs.dev/config/
 export default defineConfig({
   root: 'src',
-  base: '',
+  base: '/app/',
   build: {
     outDir: '../dist',
+    assetsDir: 'assetsapp',
+    rollupOptions: {
+      input: 'src/App.html'
+    }
+
   },
   resolve: {
     alias: {

@@ -83,6 +83,7 @@ function Dashboard() {
                            </Select>
                        </FormControl>
                         <p>Selected Branch: {selectedOption}</p>
+                            {/*use fecth to give info to the fastapi server*/}
                             <Link to={`http://127.0.0.1:8080/api/start/?repo=${repoUrl}/${selectedOption}`}>
                                 <Button variant="contained" color="primary">
                                     Generate Document

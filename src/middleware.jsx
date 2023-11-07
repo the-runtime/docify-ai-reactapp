@@ -25,7 +25,7 @@ const AuthMiddleware =  ({children}) => {
 
 async function checkAuthentication(){
     try {
-        const resp = await fetch("http://127.0.0.1:8080/api/checkauth", {
+        const resp = await fetch("/api/checkauth", {
             method: 'GET',
             credentials: 'include'
         })

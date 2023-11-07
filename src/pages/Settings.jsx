@@ -41,7 +41,7 @@ function Settings() {
 
 
 async function getUserInfo() {
-    const url = "http://127.0.0.1:8080/api/userinfo"
+    const url = "/api/userinfo"
     const resp = await fetch(url,{
         method: 'Get',
         credentials: 'include'
