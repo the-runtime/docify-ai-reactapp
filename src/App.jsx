@@ -5,9 +5,11 @@ import SettingsPage from './pages/Settings';
 import LoginPage from "./pages/loginSignup";
 import AuthMiddleware from "./middleware";
 
+const basename = import.meta.env.BASE_URL
+
 function App() {
     return (
-        <Router>
+        <Router basename={basename}>
             <Routes>
                 <Route path="/" element={<AuthMiddleware><DashboardPage/></AuthMiddleware>}/>
                 <Route path="/login" element={<LoginPage/>}/>
